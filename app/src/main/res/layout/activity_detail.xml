@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/navy">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar"
+        android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+        android:background="@color/navy" app:titleTextColor="@color/white" app:navigationIconTint="@color/white" />
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:background="@color/background" android:fillViewport="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="20dp">
+            <ProgressBar android:id="@+id/progress" style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent" android:layout_height="4dp" android:indeterminate="true" />
+            <TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:textColor="@color/muted" android:accessibilityLiveRegion="polite" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/retry_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reintentar" android:visibility="gone" />
+            <LinearLayout android:id="@+id/detail_content" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone">
+                <TextView android:id="@+id/detail_title" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/navy" />
+                <TextView android:id="@+id/detail_state" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:textSize="18sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp"
+                    android:text="CIUDADANO" android:textSize="12sp" android:textStyle="bold" android:textColor="@color/muted" />
+                <TextView android:id="@+id/detail_dni" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:textColor="@color/navy" android:textSize="18sp" android:textIsSelectable="true" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"
+                    android:text="FECHA Y HORA" android:textSize="12sp" android:textStyle="bold" android:textColor="@color/muted" />
+                <TextView android:id="@+id/detail_date" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:textColor="@color/navy" android:textSize="16sp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"
+                    android:text="DIRECCIÓN" android:textSize="12sp" android:textStyle="bold" android:textColor="@color/muted" />
+                <TextView android:id="@+id/detail_address" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:textColor="@color/navy" android:textSize="16sp" android:textIsSelectable="true" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"
+                    android:text="DESCRIPCIÓN" android:textSize="12sp" android:textStyle="bold" android:textColor="@color/muted" />
+                <TextView android:id="@+id/detail_description" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:textColor="@color/navy" android:textSize="16sp" android:textIsSelectable="true" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/attend_button"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp" android:text="Marcar como atendida" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp"
+                    android:text="La atención del serenazgo cambia el estado de pendiente (1) a atendida (0)."
+                    android:textSize="13sp" android:textColor="@color/muted" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

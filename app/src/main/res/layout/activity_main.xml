@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/navy">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+        android:background="@color/navy" app:titleTextColor="@color/white" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:orientation="vertical" android:padding="16dp" android:background="@color/background">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Tu municipio, más seguro" android:textSize="24sp" android:textStyle="bold" android:textColor="@color/navy" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" android:text="Registra y consulta reportes de inseguridad ciudadana."
+            android:textSize="14sp" android:textColor="@color/muted" />
+        <TextView android:id="@+id/api_url" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:textSize="11sp" android:textColor="@color/muted" android:maxLines="2" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="8dp">
+            <com.google.android.material.textfield.TextInputLayout style="@style/FieldLayout"
+                android:layout_width="0dp" android:layout_weight="1" android:hint="DNI del ciudadano">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/search_dni"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="number" android:maxLength="8" android:singleLine="true"
+                    android:imeOptions="actionSearch" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.button.MaterialButton android:id="@+id/search_button"
+                android:layout_width="wrap_content" android:layout_height="56dp" android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp" android:text="Buscar" android:minWidth="84dp" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton android:id="@+id/new_button"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Nueva denuncia" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/refresh_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="Actualizar" />
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/all_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Volver a todas las denuncias"
+            android:visibility="gone" />
+        <TextView android:id="@+id/list_title" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="Todas las denuncias" android:textStyle="bold" android:textSize="17sp" android:textColor="@color/navy" />
+        <ProgressBar android:id="@+id/progress" style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent" android:layout_height="4dp" android:indeterminate="true"
+            android:layout_marginTop="8dp" android:visibility="gone" />
+        <TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:paddingTop="8dp" android:paddingBottom="4dp" android:textColor="@color/muted" android:textSize="13sp"
+            android:accessibilityLiveRegion="polite" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/retry_button"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reintentar"
+            android:visibility="gone" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler"
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:clipToPadding="false" android:paddingTop="4dp" android:paddingBottom="8dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/load_more"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cargar 5 siguientes" />
+    </LinearLayout>
+</LinearLayout>

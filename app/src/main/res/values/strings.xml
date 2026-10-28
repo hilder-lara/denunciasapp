@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Denuncias Lara</string>
+    <string-array name="denuncia_types">
+        <item>ROBO</item>
+        <item>ASALTO</item>
+        <item>VANDALISMO</item>
+        <item>OTRO</item>
+    </string-array>
+</resources>
