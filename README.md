@@ -8,40 +8,44 @@ Aplicación Java nativa con XML, Material Components, RecyclerView y Retrofit. C
 2. Espera la sincronización de Gradle. El proyecto utiliza Android Gradle Plugin **9.1.0**, Gradle **9.3.1**, `compileSdk 36`, `targetSdk 35` y `minSdk 26`.
 3. En **Settings > Build, Execution, Deployment > Build Tools > Gradle**, selecciona un JDK compatible para Gradle. En esta computadora puede usarse el JDK 25 integrado en `D:\Android Studio\jbr`. El código se compila con nivel de lenguaje Java 17.
 4. En **Tools > SDK Manager**, comprueba que esté instalado Android SDK Platform 36. Si Android Studio solicita la ubicación, usa `D:\AndroidSDK` en esta computadora. La ruta local queda en `local.properties`, excluido del repositorio.
-5. Inicia la API y configura la URL como se indica abajo.
+5. Usa la API de Render configurada; para desarrollo local puedes cambiar la URL como se indica abajo.
 6. Abre un emulador con Android 8.0/API 26 o posterior en **Device Manager**, selecciónalo y pulsa **Run app**.
 
 El comando `java` de esta computadora puede apuntar a Java 8. No lo uses para ejecutar Gradle sin seleccionar antes el JDK adecuado.
 
 ## Configurar la API
 
-En `gradle.properties` cambia esta propiedad y después pulsa **Sync Project with Gradle Files**:
-
-```properties
-API_BASE_URL=http://10.0.2.2:18080/
-```
-
-Con Render, usa la URL pública **real** de tu servicio, por ejemplo:
+El proyecto ya tiene configurada en `gradle.properties` la URL pública de la API desplegada en Render:
 
 ```properties
 API_BASE_URL=https://denunciaservice-lara.onrender.com/
 ```
 
-Ese dominio es un ejemplo: no significa que el servicio ya esté desplegado. La URL debe terminar en `/`. Usa la raíz del servicio, sin añadir `denuncias/`, porque Retrofit agrega cada ruta.
+Despliegue verificado el 28/10/2026: servicio Live, cinco endpoints correctos y colección Postman ejecutada con 8 peticiones y 15 aserciones sin fallos. Antes de cada demostración, comprueba que Render y su base sigan disponibles.
+
+Para desarrollar con la API local desde el emulador, cambia la propiedad y después pulsa **Sync Project with Gradle Files**:
+
+```properties
+API_BASE_URL=http://10.0.2.2:18080/
+```
+
+La URL debe terminar en `/`. Usa la raíz del servicio, sin añadir `denuncias/`, porque Retrofit agrega cada ruta.
 
 | Ejecución | URL base |
 | --- | --- |
 | Emulador Android y API en la computadora | `http://10.0.2.2:18080/` |
 | Celular físico y API local, ambos en la misma red | `http://IP_DE_TU_PC:18080/` |
-| API desplegada en Render | `https://TU_SERVICIO.onrender.com/` |
+| API pública en Render | `https://denunciaservice-lara.onrender.com/` |
 
 En un teléfono, `localhost` se refiere al propio teléfono. Usa la IP IPv4 de la computadora obtenida con `ipconfig` y permite el puerto 18080 en la red privada si el firewall bloquea la conexión.
 
 También puedes sobrescribir la propiedad para una compilación:
 
 ```powershell
-.\gradlew.bat assembleDebug -PAPI_BASE_URL=https://TU_SERVICIO.onrender.com/
+.\gradlew.bat assembleDebug -PAPI_BASE_URL=https://denunciaservice-lara.onrender.com/
 ```
+
+Desde la carpeta `Moviles`, el helper `.\scripts\Compilar-Android.ps1` respeta la URL de `gradle.properties` cuando se ejecuta sin parámetros. Para una compilación local puedes usar `.\scripts\Compilar-Android.ps1 -ApiBaseUrl 'http://10.0.2.2:18080/'`.
 
 El permiso `INTERNET` está en el manifiesto principal. Solo la variante **debug** permite HTTP local mediante `usesCleartextTraffic="true"`; la variante release exige HTTPS. La API pública no necesita contraseñas de PostgreSQL dentro de la app.
 
